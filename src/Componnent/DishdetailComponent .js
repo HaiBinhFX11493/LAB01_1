@@ -4,7 +4,7 @@ import { Card, CardImg, CardText, CardBody,
 	Button,Modal,ModalBody,
 	Form,FormGroup,Input,Label,Row, Col } from 'reactstrap';
 	import { Control, LocalForm, Errors } from 'react-redux-form';
-
+	import { Loading } from './LoadingComponent';
 import { Link } from 'react-router-dom';
 
 
@@ -150,6 +150,25 @@ const validEmail = (val) => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val
 	  
 
    const DishDetail = (props) => {
+	if (props.isLoading) {
+		return(
+			<div className="container">
+				<div className="row">            
+					<Loading />
+				</div>
+			</div>
+		);
+	}
+	else if (props.errMess) {
+		return(
+			<div className="container">
+				<div className="row">            
+					<h4>{props.errMess}</h4>
+				</div>
+			</div>
+		);
+	}
+	else if (props.dish != null) 
         if(props.dish != null){
             return (
                 <div className="container">
