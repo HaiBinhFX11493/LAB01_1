@@ -29,7 +29,7 @@ const validEmail = (val) => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val
         );
     }
 
-   function RenderComments({comments}) {
+   function RenderComments({comments,addComment, dishId}) {
 	  
 
 	
@@ -47,7 +47,7 @@ const validEmail = (val) => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val
                             );
                         })}
                     </ul>
-				<CommentForm/>
+				<CommentForm dishId={dishId} addComment={addComment}/>
                 </div>
             );
         } else {
@@ -82,8 +82,8 @@ const validEmail = (val) => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val
 			});
 		}
 		handleSubmit(values) {
-			console.log('Current State is: ' + JSON.stringify(values));
-			alert('Current State is: ' + JSON.stringify(values));
+			this.toggleModal();
+			this.props.addComment(this.props.dishId, values.rating, values.author, values.comment)
 			// event.preventDefault();
 		}
 		
@@ -168,7 +168,9 @@ const validEmail = (val) => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val
                         <RenderDish dish={props.dish} />
                     </div>
                     <div className="col-12 col-md-5 m-1">
-                        <RenderComments comments={props.comments} />
+                        <RenderComments comments={props.comments}
+						addComment={props.addComment} 
+						dishId={props.dish.id}/>
                     </div>
                 </div>
                 </div>
