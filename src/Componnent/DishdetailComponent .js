@@ -30,7 +30,7 @@ const validEmail = (val) => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val
         );
     }
 
-   function RenderComments({comments,addComment, dishId}) {
+   function RenderComments({comments,postComment, dishId}) {
 	  
 
 	
@@ -48,7 +48,7 @@ const validEmail = (val) => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val
                             );
                         })}
                     </ul>
-				<CommentForm dishId={dishId} addComment={addComment}/>
+					<CommentForm dishId={dishId} postComment={postComment} />
                 </div>
             );
         } else {
@@ -84,7 +84,7 @@ const validEmail = (val) => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val
 		}
 		handleSubmit(values) {
 			this.toggleModal();
-			this.props.addComment(this.props.dishId, values.rating, values.author, values.comment)
+			this.props.postComment(this.props.dishId, values.rating, values.author, values.comment);
 			// event.preventDefault();
 		}
 		
