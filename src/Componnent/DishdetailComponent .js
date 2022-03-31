@@ -30,7 +30,7 @@ const validEmail = (val) => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val
         );
     }
 
-   function RenderComments({comments,postComment, dishId}) {
+	function RenderComments({comments, postComment, dishId}) {
 	  
 
 	
@@ -92,7 +92,7 @@ const validEmail = (val) => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val
 			return (
 				<React.Fragment>
 				<Button outline onClick={this.toggleModal}><span className="fa fa-sign-in fa-lg"></span> Submit Comment</Button>
-				<LocalForm onSubmit={(values) => this.handleSubmit(values)}>
+				<Form onSubmit={(values) => this.handleSubmit(values)}>
 				
 				<Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
 					<ModalHeader toggle={this.toggleModal}>Submit Comment</ModalHeader>
@@ -142,7 +142,7 @@ const validEmail = (val) => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val
 						</Form>
 					</ModalBody>
 				</Modal>
-				</LocalForm>
+				</Form>
 				</React.Fragment>
 				
 			)
@@ -189,7 +189,7 @@ const validEmail = (val) => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val
                     </div>
                     <div className="col-12 col-md-5 m-1">
                         <RenderComments comments={props.comments}
-						addComment={props.addComment} 
+						postComment={props.postComment}
 						dishId={props.dish.id}/>
                     </div>
                 </div>
